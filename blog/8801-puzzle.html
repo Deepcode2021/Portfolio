@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8801 ARG </title>
+    <style>
+        :root {
+            --bg: #000000;
+            --fg: #e0e0e0;
+            --highlight: #ffffff;
+            --dim: #666666;
+            --code-bg: #0a0a0a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--fg);
+            font-family: 'Courier New', Courier, monospace;
+            text-transform: uppercase;
+            line-height: 1.6;
+            padding: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow-x: hidden;
+        }
+
+        ::selection {
+            background: var(--fg);
+            color: var(--bg);
+        }
+
+        a {
+            color: var(--fg);
+            text-decoration: none;
+            position: relative;
+            cursor: pointer;
+        }
+
+        a:hover {
+            color: var(--bg);
+            background-color: var(--fg);
+        }
+
+        /* Typography & Headings */
+        h1 {
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: var(--highlight);
+            letter-spacing: -1px;
+            word-break: break-word;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin: 3rem 0 1.5rem 0;
+            color: var(--highlight);
+            border-bottom: 1px dashed var(--dim);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+        }
+
+        ul {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+            list-style-type: square;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .dim-text {
+            color: var(--dim);
+        }
+
+        /* Navigation */
+        nav {
+            margin-bottom: 3rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px dashed var(--dim);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        /* Post Metadata */
+        .post-meta {
+            margin-bottom: 3rem;
+            padding-left: 1rem;
+            border-left: 2px solid var(--dim);
+            color: var(--dim);
+            font-size: 0.9rem;
+        }
+
+        /* Image Styling */
+        .blog-img {
+            width: 100%;
+            height: auto;
+            border: 1px dashed var(--dim);
+            margin-top: 1.5rem;
+            display: block;
+            filter: grayscale(100%) contrast(120%);
+            transition: filter 0.3s;
+        }
+
+        .blog-img:hover {
+            filter: grayscale(0%);
+        }
+
+        .img-caption {
+            color: var(--dim);
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        /* Code Blocks */
+        pre {
+            background-color: var(--code-bg);
+            border: 1px dashed var(--dim);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            overflow-x: auto;
+            text-transform: none;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            color: var(--highlight);
+        }
+
+        .cmd-prompt::before {
+            content: "8801@arg:~$ ";
+            color: var(--dim);
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 6rem;
+            padding-top: 2rem;
+            border-top: 1px dashed var(--dim);
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-item">
+            <span class="dim-text"><-< /span>
+                    <a href="../blog.html">RETURN TO BLOG ARCHIVE</a>
+        </div>
+        <div class="nav-item dim-text">
+            FILE: 8801-PUZZLE.MD
+        </div>
+    </nav>
+
+    <main>
+        <article>
+            <h1>EVER HEARD OF 8801? DESIGNING A CICADA-INSPIRED ARG</h1>
+
+            <div class="post-meta">
+                <p>DATE: OCT 2026</p>
+                <p>TAGS: #AUDIO-SPECTRUM #PUZZLE-ARG #STEGANOGRAPHY #8801</p>
+            </div>
+
+            <p>
+                I have always been deeply fascinated by mystery puzzles, alternate reality games (ARGs), and internet
+                riddles like <strong>Cicada 3301</strong>. To test the technical curiosity and problem-solving skill of
+                my college peers, I decided to design my own multi-stage puzzle called <strong>8801</strong>.
+            </p>
+
+            <p>
+                The goal was simple: create an intricate sequence of hidden clues spanning steganography, custom web
+                endpoints, audio spectrograms, and cipher grids—requiring solvers to think beyond surface-level code.
+            </p>
+
+            <!-- IMAGE PLACEHOLDER 1: MAIN PROMPT / CARD -->
+            <img src="../assets/8801/final.jpg" alt="8801 Initial Prompt Box" class="blog-img">
+            <p class="img-caption">[ FIG 1.0: THE INITIAL INVITATION CARD FOR 8801 ]</p>
+
+            <h2>[1] THE INITIAL HOOK & HIDDEN ENDPOINTS</h2>
+            <p>
+                Every good ARG starts with an ambiguous initial prompt. I crafted an initial image card featuring
+                cryptic text:
+            </p>
+
+            <pre><code class="cmd-prompt">"Hello Again! In the world of goodness there hides something... Find what in the BOX is hidden and it will lead you to us. Good Luck 8801"</code></pre>
+
+            <p>
+                Hidden directly within the image file's EXIF data and metadata was a sub-prompt pointing to a hidden
+                deployment URL (`8801.vercel.app`). Solvers who inspected the element or extracted the raw data unlocked
+                the first pathway into the puzzle network.
+            </p>
+
+            <!-- IMAGE PLACEHOLDER 2: FLOWCHART DIAGRAM -->
+            <img src="../assets/8801/8801_flowchart.png" alt="8801 Puzzle Workflow Diagram" class="blog-img">
+            <p class="img-caption">[ FIG 2.0: ARCHITECTURAL FLOWCHART OF THE 8801 PUZZLE STAGES ]</p>
+
+            <h2>[2] AUDIO SPECTROGRAMS & FREQUENCY HIDING</h2>
+            <p>
+                One of the most exciting stages of the 8801 puzzle involved embedding visual data directly into sound
+                frequencies:
+            </p>
+
+            <ul>
+                <li><strong>AUDIO STEGANOGRAPHY:</strong> Solvers were given an audio file that sounded like distorted
+                    ambient static or white noise.</li>
+                <li><strong>SPECTROGRAM ANALYSIS:</strong> Opening the file inside an audio tool like Sonic Visualiser
+                    or Audacity and switching to a full spectrogram view revealed a hidden visual code drawn into the
+                    high-frequency spectrum.</li>
+            </ul>
+
+            <h2>[3] MATRIX GRIDS, CIPHERS & THE FINAL KEY</h2>
+            <p>
+                After extracting the audio key, solvers were navigated to a final matrix grid challenge. This grid
+                required deciphering binary coordinate patterns to form the signature "8801" glyph layout.
+            </p>
+
+            <!-- IMAGE PLACEHOLDER 3: MATRIX / GRID PUZZLE -->
+            <img src="../assets/8801/iwpent-c.jpeg" alt="8801 Grid Cipher Image" class="blog-img">
+            <p class="img-caption">[ FIG 3.0: THE 8801 MATRIX GRID CIPHER ]</p>
+
+            <p>
+                Building 8801 was a fantastic exercise in combining web hosting, audio manipulation, and cryptographic
+                puzzles into a seamless narrative experience. Watching students collaborate and decipher each layer
+                proved how engaging well-crafted technical puzzles can be.
+            </p>
+
+            <p>
+                <a href="https://www.reddit.com/r/NIT_Bhopal/s/1hlZMzmgfi" target="_blank" class="dim-text">[ VIEW
+                    CHECK OUT THE POST -> ]</a>
+            </p>
+
+        </article>
+    </main>
+
+    <footer id="contact">
+        <div>
+            <p class="dim-text">DEEPAK VISHWAKARMA</p>
+            <p>NIT BHOPAL (MANIT)</p>
+        </div>
+        <div>
+            <p><a href="https://github.com/Deepcode2021" target="_blank">GITHUB.COM/DEEPCODE2021</a></p>
+            <p class="dim-text">EOF</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management CLI | Deepak Vishwakarma</title>
+    <style>
+        :root {
+            --bg: #000000;
+            --fg: #e0e0e0;
+            --highlight: #ffffff;
+            --dim: #666666;
+            --code-bg: #0a0a0a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--fg);
+            font-family: 'Courier New', Courier, monospace;
+            text-transform: uppercase;
+            line-height: 1.6;
+            padding: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow-x: hidden;
+        }
+
+        ::selection {
+            background: var(--fg);
+            color: var(--bg);
+        }
+
+        a {
+            color: var(--fg);
+            text-decoration: none;
+            position: relative;
+            cursor: pointer;
+        }
+
+        a:hover {
+            color: var(--bg);
+            background-color: var(--fg);
+        }
+
+        /* Typography & Headings */
+        h1 {
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: var(--highlight);
+            letter-spacing: -1px;
+            word-break: break-word;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin: 3rem 0 1.5rem 0;
+            color: var(--highlight);
+            border-bottom: 1px dashed var(--dim);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+        }
+
+        ul {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+            list-style-type: square;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .dim-text {
+            color: var(--dim);
+        }
+
+        /* Navigation */
+        nav {
+            margin-bottom: 3rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px dashed var(--dim);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        /* Post Metadata */
+        .post-meta {
+            margin-bottom: 3rem;
+            padding-left: 1rem;
+            border-left: 2px solid var(--dim);
+            color: var(--dim);
+            font-size: 0.9rem;
+        }
+
+        /* Code Blocks */
+        pre {
+            background-color: var(--code-bg);
+            border: 1px dashed var(--dim);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            overflow-x: auto;
+            text-transform: none;
+            /* Keep code lowercase */
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            color: var(--highlight);
+        }
+
+        .cmd-prompt::before {
+            content: "deepak@cypher:~$ ";
+            color: var(--dim);
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 6rem;
+            padding-top: 2rem;
+            border-top: 1px dashed var(--dim);
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-item">
+            <span class="dim-text"><-< /span>
+                    <!-- Points back to the root folder where blog.html lives -->
+                    <a href="../blog.html">RETURN TO BLOG ARCHIVE</a>
+        </div>
+        <div class="nav-item dim-text">
+            FILE: STUDENT-CLI.MD
+        </div>
+    </nav>
+
+    <main>
+        <article>
+            <h1>BUILDING A FULL CRUD STUDENT MANAGEMENT CLI IN PYTHON</h1>
+
+            <div class="post-meta">
+                <p>DATE: OCT 2026</p>
+                <p>TAGS: #PYTHON #CLI #GSOC2027 #OPEN-SOURCE</p>
+            </div>
+
+            <p>
+                As part of my initial preparations to start contributing to <strong>GSoC 2027</strong>, I decided to
+                build a foundational project to sharpen my Python skills. The result is a straightforward, lightweight
+                Student Management Command Line Interface (CLI).
+            </p>
+
+            <p>
+                This project focuses on executing core CRUD operations smoothly within the terminal without relying on
+                heavy GUI frameworks. It is a simple start, but a necessary stepping stone for larger open-source
+                contributions.
+            </p>
+
+            <h2>[1] FEATURES EXECUTED</h2>
+            <p>
+                While the feature set is intentionally minimal right now, it handles all standard database operations
+                directly from standard input:
+            </p>
+            <ul>
+                <li><strong>ADD:</strong> Register new students into the system.</li>
+                <li><strong>SEARCH:</strong> Query the records to find specific student details.</li>
+                <li><strong>UPDATE:</strong> Modify existing student information seamlessly.</li>
+                <li><strong>DELETE:</strong> Remove student records from the database.</li>
+            </ul>
+
+            <h2>[2] INSTALLATION & USAGE</h2>
+            <p>
+                Getting the CLI running on your local machine is very simple. Just clone the repository and execute the
+                main Python script.
+            </p>
+
+            <pre><code class="cmd-prompt">git clone https://github.com/Deepcode2021/student-managment-cli.git</code><br><code class="cmd-prompt">cd student-managment-cli</code><br><code class="cmd-prompt">python3 main.py</code></pre>
+
+            <h2>[3] SOURCE CODE</h2>
+            <p>
+                The complete source code is available on my GitHub. I plan to add more features over time as I continue
+                preparing for GSoC.
+            </p>
+
+            <p>
+                <a href="https://github.com/Deepcode2021/student-managment-cli" target="_blank" class="dim-text">[ VIEW
+                    REPOSITORY ON GITHUB -> ]</a>
+            </p>
+
+        </article>
+    </main>
+
+    <footer id="contact">
+        <div>
+            <p class="dim-text">DEEPAK VISHWAKARMA</p>
+            <p>NIT BHOPAL (MANIT)</p>
+        </div>
+        <div>
+            <p><a href="https://github.com/Deepcode2021" target="_blank">GITHUB.COM/DEEPCODE2021</a></p>
+            <p class="dim-text">EOF</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

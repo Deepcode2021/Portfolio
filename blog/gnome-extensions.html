@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building GNOME Extensions | Deepak Vishwakarma</title>
+    <style>
+        :root {
+            --bg: #000000;
+            --fg: #e0e0e0;
+            --highlight: #ffffff;
+            --dim: #666666;
+            --code-bg: #0a0a0a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--fg);
+            font-family: 'Courier New', Courier, monospace;
+            text-transform: uppercase;
+            line-height: 1.6;
+            padding: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow-x: hidden;
+        }
+
+        ::selection {
+            background: var(--fg);
+            color: var(--bg);
+        }
+
+        a {
+            color: var(--fg);
+            text-decoration: none;
+            position: relative;
+            cursor: pointer;
+        }
+
+        a:hover {
+            color: var(--bg);
+            background-color: var(--fg);
+        }
+
+        /* Typography & Headings */
+        h1 {
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: var(--highlight);
+            letter-spacing: -1px;
+            word-break: break-word;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin: 3rem 0 1.5rem 0;
+            color: var(--highlight);
+            border-bottom: 1px dashed var(--dim);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+        }
+
+        .dim-text {
+            color: var(--dim);
+        }
+
+        /* Navigation */
+        nav {
+            margin-bottom: 3rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px dashed var(--dim);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        /* Post Metadata */
+        .post-meta {
+            margin-bottom: 3rem;
+            padding-left: 1rem;
+            border-left: 2px solid var(--dim);
+            color: var(--dim);
+            font-size: 0.9rem;
+        }
+
+        /* Code Blocks */
+        pre {
+            background-color: var(--code-bg);
+            border: 1px dashed var(--dim);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            overflow-x: auto;
+            text-transform: none;
+            /* Keep code lowercase */
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            color: var(--highlight);
+        }
+
+        .cmd-prompt::before {
+            content: "deepak@cypher:~$ ";
+            color: var(--dim);
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 6rem;
+            padding-top: 2rem;
+            border-top: 1px dashed var(--dim);
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-item">
+            <span class="dim-text"><-< /span>
+                    <!-- Points back to the root folder where blog.html lives -->
+                    <a href="../blog.html">RETURN TO BLOG ARCHIVE</a>
+        </div>
+        <div class="nav-item dim-text">
+            FILE: GNOME-EXTENSIONS.MD
+        </div>
+    </nav>
+
+    <main>
+        <article>
+            <h1>CUSTOMIZING GNOME: BUILDING EXTENSIONS FROM SOURCE</h1>
+
+            <div class="post-meta">
+                <p>DATE: AUG 2026</p>
+                <p>TAGS: #LINUX #UBUNTU #SYSTEM-CONFIG</p>
+            </div>
+
+            <p>
+                When working on Ubuntu 22.04, the default GNOME desktop is stable but sometimes lacks the visual polish
+                needed for a highly customized dual-boot setup. While you can install extensions via the browser,
+                building them from source gives you the latest commits and greater control over the build environment.
+            </p>
+
+            <p>
+                One of my favorite visual tweaks is "Blur my Shell", which adds a clean, frosted glass effect to the
+                overview, dash, and panels. Here is how I usually compile and install it directly from the repository.
+            </p>
+
+            <h2>[1] PREPARING THE ENVIRONMENT</h2>
+            <p>
+                First, you need to ensure you have the necessary build tools and GNOME dependencies installed. Open your
+                terminal and fetch the required packages:
+            </p>
+
+            <pre><code class="cmd-prompt">sudo apt update</code><br><code class="cmd-prompt">sudo apt install git gettext nodejs npm gnome-shell-extension-prefs</code></pre>
+
+            <h2>[2] CLONING THE REPOSITORY</h2>
+            <p>
+                Next, clone the Blur my Shell repository from GitHub. I prefer keeping my source builds organized in a
+                dedicated directory:
+            </p>
+
+            <pre><code class="cmd-prompt">mkdir -p ~/builds && cd ~/builds</code><br><code class="cmd-prompt">git clone https://github.com/aunetx/blur-my-shell.git</code><br><code class="cmd-prompt">cd blur-my-shell</code></pre>
+
+            <h2>[3] COMPILING AND INSTALLING</h2>
+            <p>
+                The extension uses Make for its build process. Running the install command will compile the schemas and
+                place the extension in your local `~/.local/share/gnome-shell/extensions/` directory.
+            </p>
+
+            <pre><code class="cmd-prompt">make install</code></pre>
+
+            <p>
+                Once the installation completes, you need to restart the GNOME Shell. If you are on X11, you can hit
+                `ALT + F2`, type `r`, and hit Enter. If you are on Wayland, you will need to log out and log back in.
+            </p>
+
+            <h2>[4] ACTIVATION</h2>
+            <p>
+                Finally, enable the extension. You can do this via the GNOME Extensions GUI app, or directly from the
+                terminal using `gnome-extensions`:
+            </p>
+
+            <pre><code class="cmd-prompt">gnome-extensions enable blur-my-shell@aunetx</code></pre>
+
+            <p>
+                SYS.LOG: The shell should now have a blurred, frosted background instead of the harsh solid grey. This
+                approach works for almost any open-source GNOME extension on GitHub.
+            </p>
+        </article>
+    </main>
+
+    <footer id="contact">
+        <div>
+            <p class="dim-text">DEEPAK VISHWAKARMA</p>
+            <p>NIT BHOPAL (MANIT)</p>
+        </div>
+        <div>
+            <p><a href="https://github.com/Deepcode2021" target="_blank">GITHUB.COM/DEEPCODE2021</a></p>
+            <p class="dim-text">EOF</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

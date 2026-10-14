@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepak Vishwakarma | Terminal Portfolio</title>
+    <style>
+        :root {
+            --bg: #000000;
+            --fg: #e0e0e0;
+            --highlight: #ffffff;
+            --dim: #666666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--fg);
+            font-family: 'Courier New', Courier, monospace;
+            text-transform: uppercase;
+            line-height: 1.4;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow-x: hidden;
+        }
+
+        ::selection {
+            background: var(--fg);
+            color: var(--bg);
+        }
+
+        a {
+            color: var(--fg);
+            text-decoration: none;
+            position: relative;
+            cursor: pointer;
+        }
+
+        a:hover {
+            color: var(--bg);
+            background-color: var(--fg);
+        }
+
+        /* Typography & Headings */
+        h1 {
+            font-size: clamp(2rem, 6vw, 5rem);
+            line-height: 1;
+            margin-bottom: 2rem;
+            color: var(--highlight);
+            letter-spacing: -2px;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        h2 {
+            font-size: clamp(1.5rem, 4vw, 3rem);
+            margin: 4rem 0 2rem 0;
+            letter-spacing: 2px;
+            color: var(--highlight);
+            border-bottom: 1px dashed var(--dim);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .dim-text {
+            color: var(--dim);
+        }
+
+        /* Hero Section */
+        header {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding-top: 5vh;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .hero-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hero-right {
+                text-align: right;
+            }
+        }
+
+        .ascii-art {
+            font-size: 0.6rem;
+            line-height: 1.1;
+            white-space: pre;
+            color: var(--dim);
+            margin-bottom: 2rem;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            gap: 2rem;
+            margin-top: auto;
+            margin-bottom: 2rem;
+            padding-top: 4rem;
+            flex-wrap: wrap;
+            border-top: 1px dashed var(--dim);
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Biography / About */
+        .bio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .bio-column p {
+            margin-bottom: 1rem;
+        }
+
+        /* Skills */
+        .skills-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .skills-list li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .skills-list li::before {
+            content: "_ ";
+            color: var(--dim);
+            margin-right: 1rem;
+        }
+
+        /* Projects */
+        .list-item {
+            margin-bottom: 3rem;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            transition: transform 0.2s;
+        }
+
+        @media (min-width: 768px) {
+            .list-item {
+                grid-template-columns: 120px 1fr auto;
+            }
+        }
+
+        .item-id {
+            color: var(--dim);
+        }
+
+        .item-title {
+            font-size: 1.2rem;
+            color: var(--highlight);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .item-title::before {
+            content: "░░░";
+            color: var(--dim);
+            font-size: 0.8rem;
+        }
+
+        .item-meta {
+            color: var(--dim);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .item-desc {
+            max-width: 600px;
+        }
+
+        .action-btn {
+            align-self: start;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 6rem;
+            padding-top: 2rem;
+            border-top: 1px dashed var(--dim);
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .blinking-cursor::after {
+            content: "█";
+            animation: blink 1s step-start infinite;
+            color: var(--dim);
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        /* Scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="ascii-art">
+            +---------------------------------------------------+
+            | SYS.INIT() ... |
+            | LOADING MODULES ... |
+            | MECHANICAL_ENGINEERING.EXE [OK] |
+            | SOFTWARE_DEVELOPMENT.SH [OK] |
+            +---------------------------------------------------+
+        </div>
+
+        <h1 class="blinking-cursor">DEEPAK<br>VISHWAKARMA</h1>
+
+        <div class="hero-grid">
+            <div>
+                <p class="dim-text">/ STATUS</p>
+                <p>ENGINEERING STUDENT &<br>SOFTWARE DEVELOPER</p>
+            </div>
+            <div class="hero-right">
+                <p class="dim-text">/ LOCATION</p>
+                <p>BHOPAL<br>MADHYA PRADESH, INDIA</p>
+            </div>
+        </div>
+
+        <nav>
+            <div class="nav-item">
+                <span class="dim-text">^A</span>
+                <a href="#biography">BIOGRAPHY</a>
+            </div>
+            <div class="nav-item">
+                <span class="dim-text">^S</span>
+                <a href="#skills">SKILLS</a>
+            </div>
+            <div class="nav-item">
+                <span class="dim-text">^P</span>
+                <a href="#projects">PROJECTS</a>
+            </div>
+            <div class="nav-item">
+                <span class="dim-text">^B</span>
+                <!-- Updated link to the separate blog.html file -->
+                <a href="blog.html">BLOG</a>
+            </div>
+            <div class="nav-item">
+                <span class="dim-text">^C</span>
+                <a href="#contact">CONTACT</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="biography" class="reveal">
+            <h2>BIOGRAPHY</h2>
+            <div class="bio-grid">
+                <div class="bio-column">
+                    <p class="dim-text">FOCUS</p>
+                    <p>MECHANICAL<br>ENGINEERING</p>
+                    <p>SOFTWARE<br>DEVELOPMENT</p>
+                </div>
+                <div class="bio-column">
+                    <p class="dim-text">APPROACH</p>
+                    <p>CLEAN CODE<br>EFFICIENT LOGIC</p>
+                    <p>TECHNICAL<br>PRECISION</p>
+                </div>
+                <div class="bio-column">
+                    <p class="dim-text">INTERESTS</p>
+                    <p>ROBOTICS<br>3D DESIGN</p>
+                    <p>WEB SYSTEMS<br>AUTOMATION</p>
+                </div>
+                <div class="bio-column">
+                    <p class="dim-text">ROLE</p>
+                    <p>MEMBER TECHNICAL<br>EXECUTIVE @ EVOLVE CLUB</p>
+                    <p>NIT BHOPAL</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="reveal">
+            <h2>SKILLS // TOOLS</h2>
+            <div class="hero-grid">
+                <div>
+                    <p class="dim-text">[/] PROGRAMMING & WEB</p>
+                    <ul class="skills-list">
+                        <li>PYTHON</li>
+                        <li>C / C++ (FUNDAMENTAL)</li>
+                        <li>JAVASCRIPT</li>
+                        <li>HTML / CSS</li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="dim-text">[/] FRAMEWORKS & SYSTEMS</p>
+                    <ul class="skills-list">
+                        <li>STREAMLIT & FASTAPI</li>
+                        <li>LINUX (UBUNTU)</li>
+                        <li>GIT & GITHUB</li>
+                        <li>SOLIDWORKS & BLENDER</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="reveal">
+            <h2>PROJECTS</h2>
+
+            <div class="list-item">
+                <div class="item-id">[/] 01</div>
+                <div>
+                    <div class="item-title">EXDOC-ENGINE</div>
+                    <div class="item-meta">PYTHON / STREAMLIT / FASTAPI / IBM DOCLING</div>
+                    <div class="item-desc">
+                        DOCUMENT EXTRACTION ENGINE THAT CONVERTS PDF, WORD, EXCEL AND POWERPOINT FILES INTO STRUCTURED
+                        MARKDOWN USING IBM DOCLING AND MICROSOFT MARKITDOWN.
+                    </div>
+                </div>
+                <a href="https://github.com/Deepcode2021/ExDoc-Engine" target="_blank" class="action-btn dim-text">READ MORE -></a>
+            </div>
+
+            <div class="list-item">
+                <div class="item-id">[/] 02</div>
+                <div>
+                    <div class="item-title">GLOBAL LIVE TRACKER</div>
+                    <div class="item-meta">WEBGL / JAVASCRIPT / REAL-TIME DATA FEEDS</div>
+                    <div class="item-desc">
+                        INTERACTIVE 3D VISUALIZATION OF GLOBAL AIR TRAFFIC AND SATELLITE POSITIONS USING REAL-TIME DATA
+                        FEEDS AND WEBGL SHADERS. IMPLEMENTED LIVE TRACKING LAYERS RENDERED ON A 3D GLOBE INTERFACE.
+                    </div>
+                </div>
+                <a href="" target="_blank" class="action-btn dim-text">READ MORE -></a>
+            </div>
+
+            <div class="list-item">
+                <div class="item-id">[/] 03</div>
+                <div>
+                    <div class="item-title">PLAYLIYY</div>
+                    <div class="item-meta">PYTHON / RAPID API</div>
+                    <div class="item-desc">
+                        YOUTUBE MUSIC / SPOTIFY PLAYLIST DOWNLOADER USING RAPID API TO FETCH DOWNLOADS UP TO 40% FASTER.
+                    </div>
+                </div>
+                <a href="#" target="_blank" class="action-btn dim-text">READ MORE -></a>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div>
+            <p class="dim-text">DEEPAK VISHWAKARMA</p>
+            <p>NIT BHOPAL (MANIT)</p>
+        </div>
+        <div>
+            <p><a href="mailto:deepcode2007@gmail.com">DEEPCODE2007@GMAIL.COM</a></p>
+        </div>
+        <div>
+            <p><a href="https://github.com/Deepcode2021" target="_blank">GITHUB.COM/DEEPCODE2021</a></p>
+            <p class="dim-text">SYS.EXIT(0)</p>
+        </div>
+    </footer>
+
+    <script>
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach((section) => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+
+</html>

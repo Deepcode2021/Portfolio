@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepak Vishwakarma | Blog</title>
+    <style>
+        :root {
+            --bg: #000000;
+            --fg: #e0e0e0;
+            --highlight: #ffffff;
+            --dim: #666666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--fg);
+            font-family: 'Courier New', Courier, monospace;
+            text-transform: uppercase;
+            line-height: 1.4;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow-x: hidden;
+        }
+
+        ::selection {
+            background: var(--fg);
+            color: var(--bg);
+        }
+
+        a {
+            color: var(--fg);
+            text-decoration: none;
+            position: relative;
+            cursor: pointer;
+        }
+
+        a:hover {
+            color: var(--bg);
+            background-color: var(--fg);
+        }
+
+        /* Typography & Headings */
+        h1 {
+            font-size: clamp(2rem, 5vw, 4rem);
+            line-height: 1;
+            margin-bottom: 2rem;
+            color: var(--highlight);
+            letter-spacing: -2px;
+            word-break: break-word;
+        }
+
+        h2 {
+            font-size: clamp(1.5rem, 4vw, 3rem);
+            margin: 2rem 0;
+            letter-spacing: 2px;
+            color: var(--highlight);
+            border-bottom: 1px dashed var(--dim);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .dim-text {
+            color: var(--dim);
+        }
+
+        /* Navigation */
+        nav {
+            margin-bottom: 4rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px dashed var(--dim);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .ascii-art {
+            font-size: 0.6rem;
+            line-height: 1.1;
+            white-space: pre;
+            color: var(--dim);
+            margin-bottom: 2rem;
+        }
+
+        /* Blog Feed */
+        .post-item {
+            margin-bottom: 4rem;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .post-item {
+                grid-template-columns: 150px 1fr auto;
+            }
+        }
+
+        .post-date {
+            color: var(--dim);
+        }
+
+        .post-title {
+            font-size: 1.5rem;
+            color: var(--highlight);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .post-title::before {
+            content: "░░";
+            color: var(--dim);
+            font-size: 1rem;
+        }
+
+        .post-tags {
+            color: var(--dim);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .post-desc {
+            max-width: 700px;
+            margin-bottom: 1rem;
+        }
+
+        .read-btn {
+            align-self: start;
+            border: 1px solid var(--dim);
+            padding: 0.5rem 1rem;
+            display: inline-block;
+        }
+
+        .read-btn:hover {
+            border-color: var(--fg);
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 6rem;
+            padding-top: 2rem;
+            border-top: 1px dashed var(--dim);
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .blinking-cursor::after {
+            content: "█";
+            animation: blink 1s step-start infinite;
+            color: var(--dim);
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        /* Scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-item">
+            <span class="dim-text"><-< /span>
+                    <a href="index.html">RETURN TO MAIN</a>
+        </div>
+        <div class="nav-item dim-text">
+            MODULE: BLOG_ARCHIVE.SH
+        </div>
+    </nav>
+
+    <header>
+        <div class="ascii-art">
+            +---------------------------------------------------+
+            | SYS.READ() ... |
+            | LOADING BLOG ENTRIES ... |
+            | STATUS: 4 RECORDS FOUND |
+            +---------------------------------------------------+
+        </div>
+        <h1 class="blinking-cursor">WRITINGS //<br>LOG FILES</h1>
+    </header>
+
+    <main>
+        <div class="post-item reveal">
+            <div class="post-date">[/] AUG 2026</div>
+            <div>
+                <div class="post-title">CUSTOMIZING GNOME: BUILDING EXTENSIONS FROM SOURCE</div>
+                <div class="post-tags">
+                    <span>#LINUX</span>
+                    <span>#UBUNTU</span>
+                    <span>#SYSTEM-CONFIG</span>
+                </div>
+                <div class="post-desc">
+                    A WALKTHROUGH ON COMPILING AND INSTALLING DESKTOP ENVIRONMENT EXTENSIONS LIKE "BLUR MY SHELL"
+                    DIRECTLY FROM SOURCE REPOSITORIES ON UBUNTU 22.04.
+                </div>
+            </div>
+            <a href="blog/gnome-extensions.html" class="read-btn dim-text">READ POST -></a>
+        </div>
+
+        <div class="post-item reveal">
+            <div class="post-date">[/] JUL 2026</div>
+            <div>
+                <div class="post-title">CONFIGURING ROS 2 FOR AUTONOMOUS BUGGY CONTROL</div>
+                <div class="post-tags">
+                    <span>#ROBOTICS</span>
+                    <span>#ROS2</span>
+                    <span>#GAZEBO</span>
+                </div>
+                <div class="post-desc">
+                    SETTING UP CAMERA FEEDS, LIDAR OBSTACLE DETECTION, AND GAZEBO SIMULATIONS TO DEVELOP AND TEST
+                    LINE-FOLLOWING AND CONTROL ALGORITHMS FOR AN AUTONOMOUS BUGGY.
+                </div>
+            </div>
+            <a href="#" class="read-btn dim-text">READ POST -></a>
+        </div>
+    </main>
+
+    <footer id="contact">
+        <div>
+            <p class="dim-text">DEEPAK VISHWAKARMA</p>
+            <p>NIT BHOPAL (MANIT)</p>
+        </div>
+        <div>
+            <p><a href="mailto:deepcode2007@gmail.com">DEEPCODE2007@GMAIL.COM</a></p>
+        </div>
+        <div>
+            <p><a href="https://github.com/Deepcode2021" target="_blank">GITHUB.COM/DEEPCODE2021</a></p>
+            <p class="dim-text">EOF</p>
+        </div>
+    </footer>
+
+    <script>
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach((section) => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+
+</html>
